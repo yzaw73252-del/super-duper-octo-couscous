@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="YZ TikTok Assistant helps creators draft captions, hashtags and video ideas.">
+<title>YZ TikTok Assistant</title>
+<style>
+:root{color-scheme:dark;--bg:#101116;--panel:#1b1d26;--muted:#b8bbc8;--pink:#ff2d55;--cyan:#25f4ee;--line:#343744}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:linear-gradient(140deg,#11131b,#191021 55%,#102326);color:#f7f7fb}
+header{padding:32px 18px;text-align:center;border-bottom:1px solid var(--line)}.logo{width:64px;height:64px;border-radius:18px;margin:auto auto 12px;display:grid;place-items:center;font-size:28px;font-weight:900;background:linear-gradient(135deg,var(--cyan),var(--pink));color:#111}
+h1{margin:0;font-size:clamp(28px,6vw,44px)}header p{color:var(--muted);max-width:680px;margin:8px auto 0}
+nav{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;padding:14px}a{color:var(--cyan)}nav a,.btn{padding:9px 14px;border:1px solid var(--line);border-radius:12px;text-decoration:none;color:#fff;background:#20222c}
+main{width:min(900px,calc(100% - 28px));margin:22px auto 48px}.card{background:rgba(27,29,38,.94);border:1px solid var(--line);border-radius:18px;padding:20px;margin:16px 0;box-shadow:0 12px 35px #0002}
+h2{margin-top:0}label{display:block;font-weight:650;margin:12px 0 6px}input,textarea,select{width:100%;padding:12px;border:1px solid #505362;border-radius:10px;background:#11131a;color:#fff;font:inherit}textarea{min-height:100px;resize:vertical}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}button{border:0;border-radius:10px;background:var(--pink);color:white;font-weight:750;padding:12px 16px;font:inherit;cursor:pointer}.secondary{background:#303340}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#101116;padding:14px;border-radius:10px;border:1px solid var(--line);min-height:45px}small,.muted{color:var(--muted)}section{scroll-margin-top:12px}footer{text-align:center;padding:22px;color:var(--muted);border-top:1px solid var(--line)}
+.notice{border-left:4px solid var(--cyan);padding:10px 14px;background:#202b30;border-radius:8px;color:#e7fcfc}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo" aria-hidden="true">YZ</div>
+  <h1>YZ TikTok Assistant</h1>
+  <p>A simple creator helper for preparing video captions, hashtags, and content ideas.</p>
+</header>
+<nav aria-label="Page navigation">
+  <a href="#assistant">Creator tools</a><a href="#about">About</a><a href="#terms">Terms of Service</a><a href="#privacy">Privacy Policy</a>
+</nav>
+<main>
+  <section id="assistant" class="card">
+    <h2>Creator tools</h2>
+    <p class="muted">Use these tools to draft text. Nothing is posted to TikTok from this page.</p>
+    <label for="topic">Video topic</label>
+    <input id="topic" placeholder="e.g. Myanmar movie recap">
+    <label for="style">Content style</label>
+    <select id="style"><option>Fun and engaging</option><option>Educational</option><option>Storytelling</option><option>Professional</option></select>
+    <div class="actions"><button type="button" onclick="makeCaption()">Create caption</button><button type="button" class="secondary" onclick="makeHashtags()">Suggest hashtags</button><button type="button" class="secondary" onclick="makeIdeas()">Video ideas</button></div>
+    <label for="output">Your draft</label><textarea id="output" placeholder="Your generated draft will appear here."></textarea>
+    <div class="actions"><button type="button" class="secondary" onclick="copyOutput()">Copy draft</button></div>
+    <p id="status" class="muted" role="status"></p>
+    <p class="notice">TikTok account login, analytics access, and automatic posting are not connected in this starter website. These features require a real implementation and any permissions or review TikTok requires.</p>
+  </section>
+  <section id="about" class="card">
+    <h2>About this app</h2>
+    <p>YZ TikTok Assistant is a starter website that helps creators prepare text for their short-form videos. It offers simple local templates for captions, hashtags, and ideas. It does not ask for your TikTok password and does not transmit your entries to a server.</p>
+    <p>Contact: <a href="mailto:replace-with-your-contact@example.com">replace-with-your-contact@example.com</a> <small>(edit this email before publishing)</small></p>
+  </section>
+  <section id="terms" class="card">
+    <h2>Terms of Service</h2>
+    <p><strong>Effective date:</strong> November 25, 2026</p>
+    <p>By using YZ TikTok Assistant, you agree to these terms. The website provides basic tools to draft captions, hashtags, and video ideas. Outputs are suggestions only; you are responsible for checking them before use or publication.</p>
+    <p>This starter website does not log in to TikTok, publish videos, access private account data, or guarantee views, likes, followers, or audience growth. Any future TikTok integration will only be enabled after it is implemented and authorized through applicable TikTok developer permissions.</p>
+    <p>You must use the service lawfully and respect other people's rights, privacy, and platform rules. Do not use it to spam, mislead, impersonate others, or infringe copyrights.</p>
+    <p>The website is provided “as is” without a guarantee of uninterrupted operation or specific results. To the extent permitted by law, the operator is not liable for losses arising from reliance on generated suggestions.</p>
+    <p>These terms may be updated when the service changes. For questions, contact the operator using the contact details published on this page.</p>
+  </section>
+  <section id="privacy" class="card">
+    <h2>Privacy Policy</h2>
+    <p><strong>Effective date:</strong> November 25, 2026</p>
+    <p>This starter website runs caption, hashtag, and idea templates in your browser. Text entered into the tools is processed locally by the page and is not sent to the website operator by this code.</p>
+    <p>This website does not request your TikTok password and does not currently connect to your TikTok account. Do not enter passwords, access tokens, or other secrets into the page.</p>
+    <p>Your browser, hosting provider, or network may process technical information as part of delivering the website. If analytics, login, external APIs, or TikTok integration are added later, this policy must be updated to explain what data is collected, why it is used, how it is shared, and how users can contact the operator.</p>
+    <p>For privacy questions or requests, contact the operator using the contact details published in the About section.</p>
+  </section>
+</main>
+<footer>© 2026 YZ TikTok Assistant · Creator drafting tools</footer>
+<script>
+function topic(){return document.getElementById('topic').value.trim()||'my next video'}
+function style(){return document.getElementById('style').value}
+function put(text){document.getElementById('output').value=text;document.getElementById('status').textContent='Draft ready. Review it before posting.'}
+function makeCaption(){const t=topic();const s=style();const open=s==='Fun and engaging'?'You need to see this!':s==='Educational'?'Here is something useful to know:':s==='Storytelling'?'Let me tell you a story about':'Here is my take on';put(open+' '+t+'. What do you think? Share your thoughts below!')}
+function makeHashtags(){const t=topic().toLowerCase();const words=t.replace(/[^a-z0-9\u1000-\u109f\s]/g,' ').split(/\s+/).filter(Boolean).slice(0,3).map(w=>'#'+w.replace(/\s/g,''));put(['#TikTok','#ForYou','#ContentCreator',...words].join(' '))}
+function makeIdeas(){const t=topic();put('1. Three things people should know about '+t+'.\n2. A quick story or lesson about '+t+'.\n3. Common mistakes related to '+t+'.\n4. Before and after: '+t+'.\n5. Answer a frequently asked question about '+t+'.')}
+async function copyOutput(){const el=document.getElementById('output');try{await navigator.clipboard.writeText(el.value);document.getElementById('status').textContent='Copied.'}catch(e){el.select();document.execCommand('copy');document.getElementById('status').textContent='Select and copy the draft if copying did not work.'}}
+</script>
+</body>
+</html>
